@@ -6,24 +6,21 @@
 \usepackage{verbatim}
 \usepackage{subcaption}
 \usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,tikz,amssymb,tkz-linknodes}
-\usepackage{fancyhdr, float}
+\usepackage{fancyhdr}
 \usepackage[colorlinks=true, urlcolor=blue,  linkcolor=blue, citecolor=blue]{hyperref}
 \usepackage[colorinlistoftodos]{todonotes}
-\usepackage{rotating,listings}
+\usepackage{rotating}
 %\usetikzlibrary{through,backgrounds}
+\hypersetup{%
+pdfauthor={Ashudeep Singh},%
+pdftitle={Homework},%
+pdfkeywords={Tikz,latex,bootstrap,uncertaintes},%
+pdfcreator={PDFLaTeX},%
+pdfproducer={PDFLaTeX},%
+}
 %\usetikzlibrary{shadows}
 \usepackage{booktabs}
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
-
-
-\lstset{language=Python,
-        basicstyle=\ttfamily\small,
-        keywordstyle=\color{keywords},
-        commentstyle=\color{comments},
-        stringstyle=\color{red},
-        showstringspaces=false,
-        identifierstyle=\color{green},
-        procnamekeys={def,class}}
 
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{prop}[thm]{Proposition}
@@ -54,7 +51,7 @@
    \markboth{#5 -- #1}{#5 -- #1}
    \vspace*{4mm}
 }
-\newcommand{\problem}[2]{~\\\fbox{\textbf{Problem #1}}\hfill (#2 points)\newline\newline}
+\newcommand{\problem}[1]{~\\\fbox{\textbf{Problem #1}}\newline\newline}
 \newcommand{\subproblem}[1]{~\newline\textbf{(#1)}}
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\Hy}{\mathcal{H}}
@@ -63,20 +60,24 @@
 
 
 \begin{document}
-\homework{Submission Assignment \#2}{Due: 03/6/19}{Thorsten Joachims}{}{Molly Ingram, Julien Neves}{msi34, jmn252}
-\textbf{Course Policy}: Read all the instructions below carefully before you start working on the assignment, and before you make a submission.
-\begin{itemize}
-    \item Please typeset your submissions in \LaTeX. Use the template provided in {\tt a1\_template.tex} for your answers. Please include your name and NetIDs with submission.
-date and time on the first page.
-    \item Assignments are due at the beginning of class at 2:55 pm on the due date on CMS.
-    \item Late assignments can be submitted on CMS up to Sunday, Feb 17. This is also when the solutions will be released.
-    \item You can do this assignment in groups of 2. Please submit no more than one submission per group.
-    \item All sources of material must be cited. The University Academic Code of Conduct
-will be strictly enforced.
-\end{itemize}
+\homework{Submission Assignment \#2}{Submitted on: Date/Time}{Thorsten Joachims}{}{Molly Ingram, Julien Neves}{msi34, jmn252}
 
-\problem{1: }{5+5+5+10=25}
+\problem{1}
+\subproblem{a}
+\subproblem{b} 
 
+\newpage
+\problem{2}
+\subproblem{a}
+\subproblem{b} 
+\subproblem{c}
 
+\newpage
+\problem{3}
+\subproblem{a}
+\subproblem{b}
+\subproblem{c}
+\subproblem{d}
+\subproblem{e}
 
-\end{document}
+\end{document} 
