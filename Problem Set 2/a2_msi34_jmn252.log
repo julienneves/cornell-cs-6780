@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.6.17)  3 MAR 2019 10:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.6.17)  6 MAR 2019 11:44
 entering extended mode
 **./a2_msi34_jmn252.tex
 (a2_msi34_jmn252.tex
@@ -908,24 +908,35 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Try loading font information for U+msb on input line 77.
 ("C:\Users\Molly\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 88.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 88.
+)
+<algorithm1.png, id=45, 433.62pt x 289.08pt>
+File: algorithm1.png Graphic file (type png)
+<use algorithm1.png>
+Package pdftex.def Info: algorithm1.png  used on input line 94.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
+<algorithm2.png, id=47, 433.62pt x 289.08pt>
+File: algorithm2.png Graphic file (type png)
+<use algorithm2.png>
+Package pdftex.def Info: algorithm2.png  used on input line 95.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
+[3 <./algorithm1.png> <./algorithm2.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 103.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 103.
  (a2_msi34_jmn252.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 88.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 88.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 103.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 103.
 Package rerunfilecheck Info: File `a2_msi34_jmn252.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 88.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 103.
  ) 
 Here is how much of TeX's memory you used:
- 18864 strings out of 493305
- 361408 string characters out of 3129802
- 417927 words of memory out of 3000000
- 22083 multiletter control sequences out of 15000+200000
+ 18875 strings out of 493305
+ 361590 string characters out of 3129802
+ 421927 words of memory out of 3000000
+ 22091 multiletter control sequences out of 15000+200000
  7571 words of font info for 29 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,6n,80p,420b,325s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,6n,80p,616b,325s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Molly/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb><C:/Users/Molly/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmbx7.pfb><C:/Users/Molly/AppData/Local/Programs/MiKTeX 2.9/fo
@@ -942,9 +953,9 @@ grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Molly/AppD
 ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/User
 s/Molly/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10
 .pfb>
-Output written on a2_msi34_jmn252.pdf (3 pages, 149175 bytes).
+Output written on a2_msi34_jmn252.pdf (3 pages, 184905 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
+ 103 PDF objects out of 1000 (max. 8388607)
  4 named destinations out of 1000 (max. 500000)
- 109 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 119 words of extra memory for PDF output out of 10000 (max. 10000000)
 
