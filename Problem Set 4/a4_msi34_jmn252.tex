@@ -1,0 +1,282 @@
+\documentclass[a4 paper, 15pt]{article}
+% Set target color model to RGB
+\usepackage[inner=2.0cm,outer=2.0cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage[rgb]{xcolor}
+\usepackage{verbatim}
+\usepackage{subcaption}
+\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,tikz,amssymb,tkz-linknodes}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true, urlcolor=blue,  linkcolor=blue, citecolor=blue]{hyperref}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{rotating}
+\usepackage{xcolor,colortbl}
+\usepackage{makecell, float}
+%\usetikzlibrary{through,backgrounds}
+\hypersetup{%
+pdfauthor={Ashudeep Singh},%
+pdftitle={Homework},%
+pdfkeywords={Tikz,latex,bootstrap,uncertaintes},%
+pdfcreator={PDFLaTeX},%
+pdfproducer={PDFLaTeX},%
+}
+%\usetikzlibrary{shadows}
+\usepackage{booktabs}
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{rem}[thm]{Remark}
+\numberwithin{equation}{section}
+
+\newcommand{\homework}[6]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf CS 6780:~Advanced Machine Learning \hfill {\small (#2)}} }
+       \vspace{6mm}
+       \hbox to 6.28in { {\Large \hfill #1  \hfill} }
+       \vspace{6mm}
+       \hbox to 6.28in { {\it Instructor: {\rm #3} \hfill Name: {\rm #5}, Netid: {\rm #6}} }
+       %\hbox to 6.28in { {\it TA: #4  \hfill #6}}
+      \vspace{2mm}}
+   }
+   \end{center}
+   \markboth{#5 -- #1}{#5 -- #1}
+   \vspace*{4mm}
+}
+\newcommand{\problem}[1]{~\\\fbox{\textbf{Problem #1}}\newline\newline}
+\newcommand{\subproblem}[1]{~\newline\textbf{(#1)}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\Hy}{\mathcal{H}}
+\newcommand{\VS}{\textrm{VS}}
+\newcommand{\solution}{~\newline\textbf{\textit{(Solution)}} }
+
+
+\begin{document}
+\homework{Submission Assignment \#4}{Submitted on: 4/18/2019}{Thorsten Joachims}{}{Molly Ingram, Julien Neves}{msi34, jmn252}
+
+\problem{1}
+\subproblem{a} To compute the probability of observing $(O_1, O_2, O3) = (0,1,0)$ we must compute the probability of observing this in all possible state sequences, shown in the table below.  Summing these probabilities gives $P((O_1, O_2, O3) = (0,1,0)) = 0.12038 $.
+\vspace{1em}
+
+\begin{tabular}{lll}
+	\hline
+	State Sequence & Initial Prob X Transition Probs & Probability	\\
+	\hline \hline
+	AAA & $P(A)P(0\vert A)P(A\vert A)P(1\vert A)P(A\vert A)P(0\vert A)$  & 0.12		\\
+	AAB & $P(A)P(0\vert A)P(A\vert A)P(1\vert A)P(B\vert A)P(0\vert B)$  & 0.00016	\\
+	ABB & $P(A)P(0\vert A)P(B\vert A)P(1\vert B)P(B\vert B)P(0\vert B)$  & 0.000057		\\
+	ABA & $P(A)P(0\vert A)P(B\vert A)P(1\vert B)P(A\vert B)P(0\vert A)$  & 0.000071	\\
+	BAA & $P(B)P(0\vert B)P(A\vert B)P(1\vert A)P(A\vert A)P(0\vert A)$  & 0.0000016		\\
+	BAB & $P(B)P(0\vert B)P(A\vert B)P(1\vert A)P(B\vert A)P(0\vert B)$  & 0.00000002		\\
+	BBA & $P(B)P(0\vert B)P(B\vert B)P(1\vert B)P(A\vert B)P(0\vert A)$  & 0.0000071		\\
+	BBB & $P(B)P(0\vert B)P(B\vert B)P(1\vert B)P(B\vert B)P(0\vert B)$  & 0.000088		\\
+	\hline
+\end{tabular}
+\vspace{1em}
+
+\subproblem{b} Using the Viterbi algorithm to compute the most likely sequence is shown in the table below. They states chosen by the algorithm are highlight in red.
+\vspace{1em}
+
+\begin{tabular}{llll}
+	\hline
+	State & $P(y)P(0\vert y)$ & $P(y\vert y_1 )P(1\vert y)$ & $P(y\vert y_2 )P(0\vert y)$ \\
+	\hline \hline
+	A & \cellcolor{red!25}0.79  & \cellcolor{red!25}0.198  & \cellcolor{red!25}0.79 \\
+	B & 0.001 & 0.009 & 0.001 \\
+	\hline
+
+\end{tabular}
+
+
+
+\newpage
+\problem{2}
+\subproblem{a} Consider $X = (0,1,1)$, which generates $H = (n_1=0, h_2=1, h_3=1)$, and $y^* = h^*(x_t) = (1,0,1)$ so $d = 3$.  For the first iteration through the algorithm, we make a mistake and reduce $V_2 = {h_2, h_3}$. The second iteration we also make a mistake and we get $V_3 = {h_3}$. The final iteration ends with $h_3$ as the only consistent hypothesis after making $d-1$ mistakes.  However, it's possible to end the algorithm with no consistent hypotheses.  If we had $d=2$ and removed the 3rd example, we would make 2 mistakes and end with $V$ as the empty set.
+\par
+\subproblem{b} Consider the Halving algorithm presented in lecture with the one additional rule that in the event of no simple majority, the algorithm chooses the lowest expert prediction.
+\par
+Now consider $X=(0,1,1)$ and $h^*=(1,1,1)$.  The table below lists the hypothesis class and when we arrive at the perfect expert.  It is clear from the table that the algorithm makes exactly $log_2|H| = 3$ mistakes.
+\vspace{1em}
+\begin{tabular}{lllll}
+	\hline
+	H & Iter. 1 & Iter. 2 & Iter. 3 & End \\
+	\hline \hline
+	(0,1,1) & X &  & & \\
+	(0,0,1) & X & & & \\
+	(0,1,0) & X & & & \\
+	(0,0,0) & X & & & \\
+	(1,1,1) &  & & & Perfect \\
+	(1,0,1) &  & X & & \\
+	(1,0,0) &  & X & & \\
+	(1,1,0) &  & & X & \\
+	\hline
+
+\end{tabular}
+
+\subproblem{c}
+
+\newpage
+\problem{3}
+\subproblem{a}
+First, we compute the $P(x_i\mid p^{(k)})$ using the following formula
+\begin{align*}
+  P(x\mid p^{(k)}) = \Pi^D_{d=1} (p_d^{(k)})^{x_d}(1-p_d^{(k)})^{(1-x_d)}
+\end{align*}
+and we report the results in Table \ref{tab1}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c c}\hline
+  $x_i$ & $P(x_i\mid  \left(\frac{1}{2},\frac{1}{2},\frac{1}{2} \right) )$ & $P(x_i\mid  \left(0,0,0 \right) )$ \\
+  \hline
+  \hline
+  $\left(0,1,0 \right)$ & $\frac{1}{8}$ & $0$ \\
+
+  $\left(0,1,1 \right)$ & $\frac{1}{8}$ & $0$ \\
+
+  $\left(0,0,0 \right)$ & $\frac{1}{8}$ & $1$ \\
+  \hline
+  \end{tabular}
+  \caption{$P(x_i\mid p^{k})$ at time $t=0$}
+  \label{tab1}
+\end{table}
+
+By definition, we have that \[
+P(x_i\mid z_i^{(k)},\pi, \pmb{p}) = P(x_i\mid p^{k})
+\]
+This proprety simplifies the expression $\eta(z_i^{(k)})$ with the following formula
+\begin{align*}
+  \eta(z_i^{(k)}) & = \frac{\pi_k P(x_i\mid z_i^{k},\pi, \pmb{p})}{\sum_{k\prime}\pi_{k\prime} P(x_i\mid z_i^{k\prime},\pi, \pmb{p})}\\
+  & = \frac{\pi_k P(x_i\mid p^{k}) }{\sum_{k\prime}\pi_{k\prime} P(x_i\mid p^{k\prime })}
+\end{align*}
+
+Therefore, using Table \ref{tab1}, we can compute easily the $\eta(z_i^{(k)})$. The results are reported in Table \ref{tab2}.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}\hline
+  \diaghead{\theadfont 1231212314}%
+  {$i$}{$k$}&
+  \thead{$k = 1$}&\thead{$k = 2$}\\
+  \hline
+  $i = 1$ & $1$ & $0$ \\
+  \hline
+  $i = 2$ & $1$ & $0$ \\
+  \hline
+  $i = 3$ & $\frac{1}{9}$ & $\frac{8}{9}$ \\
+  \hline
+  \end{tabular}
+  \caption{$\eta(z_i^{(k)})$ at time $t=0$}
+  \label{tab2}
+\end{table}
+
+
+\subproblem{b}
+
+First, we can sum the $\eta(z_i^{(k)})$ over the $i$, to get $N_k$, i.e.,
+\[
+N_1 = 1+1+\frac{1}{9} = \frac{19}{9}\text{ and } N_2 = \frac{8}{9}
+\]
+
+Using, $x_i$, $\eta(z_i^{(k)})$, and $N_k$, it is straightforward to compute $p_{t=1}^{(1)}$ and $p_{t=1}^{(2)}$, i.e.,
+\begin{align*}
+  p_{t=1}^{(1)} &= \frac{\sum^N_{i=1}\eta (z_i^{(1)})x_i}{N_1}\\
+  & = \frac{1 \cdot (0,1,0) +1 \cdot (0,1,1) + \frac{1}{9} \cdot (0,0,0) }{\frac{19}{9}}\\
+  p_{t=1}^{(1)} & = \left(0,  \frac{18}{19}, \frac{9}{19}\right)
+\end{align*}
+and
+\begin{align*}
+  p_{t=1}^{(2)} &= \frac{\sum^N_{i=1}\eta (z_i^{(2)})x_i}{N_2}\\
+  & = \frac{0 \cdot (0,1,0) +0 \cdot (0,1,1) + \frac{8}{9} \cdot (0,0,0) }{\frac{8}{9}}\\
+  p_{t=1}^{(2)} & = \left(0,  0, 0\right)
+\end{align*}
+
+Therefore, $\pmb{p}_{t=1}$ is given by
+\begin{align*}
+  \pmb{p}_{t=1} = \left\{\left(0,  \frac{18}{19}, \frac{9}{19}\right), \left(0,  0, 0\right) \right\}
+\end{align*}
+
+\subproblem{c}
+
+Since we have computed the $N_k$ in part (b), it is even easier now to update $\pi$. In fact, we have that
+\begin{align*}
+  \pi_{k=1, t=1} & = \frac{N_1}{N_1 + N_2} \\
+  & = \frac{\frac{19}{9}}{ \frac{19}{9} + \frac{8}{9}}\\
+  \pi_{k=1, t=1} & = \frac{19}{27}
+\end{align*}
+and
+\begin{align*}
+  \pi_{k=1, t=1} & = \frac{N_1}{N_1 + N_2} \\
+  & = \frac{\frac{8}{9}}{ \frac{19}{9} + \frac{8}{9}}\\
+  \pi_{k=2, t=1} & = \frac{8}{27}
+\end{align*}
+
+Combining both solution, we have the following
+\begin{align*}
+  {\pi}_{t=1} = \left\{\frac{19}{27},  \frac{8}{27} \right\}
+\end{align*}
+
+
+\subproblem{d}
+
+In order, for us to be able to compute the loglikelihood, we first need $P(x_i\mid \pmb{p}, \pi) = \sum_{k=1}^K \pi_k P(x_i\mid p^{(k)})$. To do this, we first reproduce Table \ref{tab1}, and add a column for $\sum_{k=1}^K \pi_k P(x_i\mid p^{(k)})$ where $\pi_{t=0} = \left\{\frac{1}{2}, \frac{1}{2} \right\}$
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c c |c}\hline
+  $x_i$ & $P(x_i\mid  \left(\frac{1}{2},\frac{1}{2},\frac{1}{2} \right) )$ & $P(x_i\mid  \left(0,0,0 \right) )$ & $\sum_{k=1}^K \pi_k P(x_i\mid p^{(k)})$\\
+  \hline
+  \hline
+  $\left(0,1,0 \right)$ & $\frac{1}{8}$ & $0$ & $ \frac{1}{2}  \cdot \frac{1}{8}+ \frac{1}{2}  \cdot 0 = \frac{1}{16}$ \\
+
+  $\left(0,1,1 \right)$ & $\frac{1}{8}$ & $0$& $ \frac{1}{2}  \cdot \frac{1}{8}+ \frac{1}{2}  \cdot 0 = \frac{1}{16}$ \\
+
+  $\left(0,0,0 \right)$ & $\frac{1}{8}$ & $1$ & $ \frac{1}{2}  \cdot \frac{1}{8}+ \frac{1}{2}  \cdot 1 = \frac{9}{16}$ \\
+  \hline
+  \end{tabular}
+  \caption{$P(x_i\mid p^{k})$ at time $t=0$}
+  \label{tab3}
+\end{table}
+
+Using Table \ref{tab3}, it is easy to compute $L(X\mid \pmb{p}_{t=0},\pi_{t=0} )$, i.e.,
+\begin{align*}
+  L(X\mid \pmb{p}_{t=0},\pi_{t=0} ) & = \sum_{i=1}^N \log P(x_i\mid \pmb{p}_{t=0},\pi_{t=0})\\
+  & = \log\left(\frac{1}{16}\right)+ \log\left(\frac{1}{16}\right)+ \log\left(\frac{9}{16}\right)\\
+  L(X\mid \pmb{p}_{t=0},\pi_{t=0} ) & \approx -6.12
+\end{align*}
+
+For $L(X\mid \pmb{p}_{t=1},\pi_{t=1} )$, we repeat exactly the previous steps.
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c|c c |c}\hline
+  $x_i$ & $P(x_i\mid \left(0,  \frac{18}{19}, \frac{9}{19}\right))$ & $P(x_i\mid  \left(0,0,0 \right) )$ & $\sum_{k=1}^K \pi_k P(x_i\mid p^{(k)})$\\
+  \hline
+  \hline
+  $\left(0,1,0 \right)$ & $\frac{18}{19}\cdot \frac{10}{19} = \frac{180}{361}$ & $0$ & $ \frac{19}{27}  \cdot \frac{180}{361}+  \frac{8}{27}  \cdot 0 = \frac{20}{57}$  \\
+
+  $\left(0,1,1 \right)$ & $\frac{18}{19}\cdot \frac{9}{19} = \frac{162}{361}$ & $0$ & $ \frac{19}{27}  \cdot \frac{162}{361}+  \frac{8}{27}  \cdot 0 = \frac{6}{19}$  \\
+
+  $\left(0,0,0 \right)$ & $\frac{1}{19}\cdot \frac{10}{19} = \frac{10}{361}$ & $1$ & $ \frac{19}{27}  \cdot \frac{10}{361}+  \frac{8}{27}  \cdot 1 = \frac{6}{19}$   \\
+  \hline
+  \end{tabular}
+  \caption{$P(x_i\mid p^{k})$ at time $t=0$}
+  \label{tab4}
+\end{table}
+
+Using Table \ref{tab4}, we compute $L(X\mid \pmb{p}_{t=1},\pi_{t=1} )$ in the following way
+\begin{align*}
+  L(X\mid \pmb{p}_{t=1},\pi_{t=1} ) & = \sum_{i=1}^N \log P(x_i\mid \pmb{p}_{t=1},\pi_{t=1})\\
+  & = \log\left(\frac{20}{57}\right)+ \log\left(\frac{6}{19}\right)+ \log\left(\frac{6}{19}\right)\\
+  L(X\mid \pmb{p}_{t=1},\pi_{t=1} ) & \approx -3.35
+\end{align*}
+
+Thankfully, we have that $L(X\mid \pmb{p}_{t=1},\pi_{t=1} ) \geq L(X\mid \pmb{p}_{t=0},\pi_{t=0} )$.
+
+\end{document}
